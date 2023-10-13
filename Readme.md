@@ -13,12 +13,20 @@ I've properly tested all feateures this project provides, and it works pretty go
 *IDK if it's going to work within other unix systems - I didn't try it. Hopefully it is*
 
 **Linux OS** 
+
+Use snippet below to compile ```./build/containers.so``` library file:
 ```cmd
 git clone *this repo*
 cd build
 ./build.bash
 ```
+To compile test you can use:
+```cmd
+clang -g containers.c test.c -o test
+./test
+```
 **Windows OS (soon)**
+
 
 ### 2. Code it!
 
