@@ -34,6 +34,7 @@ clang -g containers.c test.c -o test
 
 ```C++
 #include "containers.h"
+#include "stdio.h"
 
 int main()
 {
@@ -62,6 +63,7 @@ int main()
 **Linked list** aka mink_list
 ```C++ 
 #include "containers.h"
+#include "stdio.h"
 
 int main()
 {
