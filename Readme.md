@@ -17,8 +17,7 @@ I've properly tested all feateures this project provides, and it works pretty go
 Use snippet below to compile ```./build/containers.so``` library file:
 ```cmd
 git clone *this repo*
-cd build
-./build.bash
+./build/build.bash
 ```
 To compile test you can use:
 ```cmd
