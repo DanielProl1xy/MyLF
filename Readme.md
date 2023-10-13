@@ -16,7 +16,7 @@ I've properly tested all feateures this project provides, and it works pretty go
 
 Use snippet below to compile ```./build/containers.so``` library file:
 ```cmd
-git clone *this repo*
+git clone https://github.com/DanielProl1xy/MyLF.git
 ./build/build.bash
 ```
 To compile test you can use:
