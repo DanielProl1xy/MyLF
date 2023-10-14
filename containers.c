@@ -4,7 +4,7 @@
 
 #ifdef DYM_ARRAY_IMPLEMENTATION
 
-    inline dym_array *dym_init()
+    inline dym_array *dym_init(void)
     {
         return (dym_array *) malloc(sizeof(dym_array));;
     }    
@@ -137,7 +137,7 @@
 
 #ifdef MINK_LIST_IMPLEMENTATION
 
-    inline mink_list *mink_alloc()
+    inline mink_list *mink_alloc(void)
     {
         mink_list *ls = (mink_list *) malloc(sizeof(mink_list));
         ls->head = NULL;
@@ -145,7 +145,7 @@
         return ls;
     }
 
-    inline mink_node *mink_node_alloc()
+    inline mink_node *mink_node_alloc(void)
     {
         mink_node *nd = (mink_node *) malloc(sizeof(mink_node));
         nd->next = NULL;

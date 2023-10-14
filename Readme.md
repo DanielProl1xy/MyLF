@@ -9,7 +9,7 @@ I've properly tested all feateures this project provides, and it works pretty go
 - Linked list
 
 ## Usage
-### 1. Compile it!
+### 1. Build it!
 *IDK if it's going to work within other unix systems - I didn't try it. Hopefully it is*
 
 **Linux OS** 
@@ -19,13 +19,21 @@ Use snippet below to compile ```./build/containers.so``` library file:
 git clone https://github.com/DanielProl1xy/MyLF.git
 ./build/build.bash
 ```
-To compile test you can use:
+After that, you can compile test:
 ```cmd
-clang -g containers.c test.c -o test
-./test
+clang -g test.c -L./build -o ./build/test -Wl,-rpath=$(pwd)/build -l:containers.so
+.build/test
 ```
-**Windows OS (soon)**
-
+**Windows OS**
+```cmd
+git clone https://github.com/DanielProl1xy/MyLF.git
+./build/build.bat
+```
+After that, you can compile test:
+```cmd
+gcc -g test.c -o build\test -Lbuild\ -l:containers.so
+build\test.exe
+```
 
 ### 2. Code it!
 
@@ -68,7 +76,7 @@ int main()
 {
     mink_list *list = mink_alloc();
 
-    for(size_t i = 0; i < size; ++i)
+    for(size_t i = 0; i < 32; ++i)
     {
         mink_append(list, i);
     }
@@ -90,6 +98,17 @@ int main()
 }
 ```
 
+### 3. Compile your program!
+**Linux OS** 
+```cmd
+clang -g yourprogram.c -L./lib -o ./build/test -Wl,-rpath=$(pwd)/lib -l:containers.so
+./yourprogram
+```
+**Windows OS**
+```cmd
+gcc -g yourprogram.c -o yourprogram -Llib\ -l:containers.so
+yourprogram.exe
+```
 ### **MyLF API**
 ### Dynamic Array API
 
@@ -185,6 +204,6 @@ void mink_insert(mink_list *list, size_t id, VALUE_TYPE value);
 void mink_remove(mink_list *list, size_t id);
 ```
 
-### 3. Rate it!
+### 4. Rate it!
 
 I would appreciate any proper information which can help me to imporve my code and programming skills! 

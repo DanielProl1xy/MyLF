@@ -26,7 +26,7 @@ typedef struct
 
 
 // Initializes dym_array structure in heap and returs pointer to it
-MYLF_CONTAINERS MYLF_INLINE dym_array *dym_init();
+MYLF_CONTAINERS MYLF_INLINE dym_array *dym_init(void);
 // Allocates array of given [size] in heap for given [array]
 MYLF_CONTAINERS void dym_alloc(dym_array *array, size_t size);
 // Expands dym_array with given delta. Result size is [array->size + delta]
@@ -68,9 +68,9 @@ typedef struct
 } mink_list;
 
 // Allocates mink_list structure within heap memory and returns pointer to it.
-MYLF_CONTAINERS mink_list *mink_alloc();
+MYLF_CONTAINERS mink_list *mink_alloc(void);
 // Allocates mink_node structure within heap memory and returns pointer to it
-MYLF_CONTAINERS mink_node *mink_node_alloc();
+MYLF_CONTAINERS mink_node *mink_node_alloc(void);
 // Frees heap memory by given mink_list pointer
 MYLF_CONTAINERS void mink_free(mink_list* list);
 // Frees heap memory by given mink_node pointer
