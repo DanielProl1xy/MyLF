@@ -17,34 +17,24 @@ typedef int VALUE_TYPE;
 
 typedef struct
 {
-    VALUE_TYPE *begin;
-    VALUE_TYPE *end;
-    size_t last;
+    VALUE_TYPE *data;
     size_t size;
+    size_t capacity;
 
 } dym_array;
 
 
-// Initializes dym_array structure in heap and returs pointer to it
-MYLF_CONTAINERS MYLF_INLINE dym_array *dym_init(void);
+MYLF_CONTAINERS void dym_free(dym_array *array);
 // Allocates array of given [size] in heap for given [array]
-MYLF_CONTAINERS void dym_alloc(dym_array *array, size_t size);
+MYLF_CONTAINERS void dym_resize(dym_array *array, size_t size);
 // Expands dym_array with given delta. Result size is [array->size + delta]
 MYLF_CONTAINERS void dym_expand(dym_array *array, size_t delta);
-// Returns value of [array] at position [id]
-MYLF_CONTAINERS MYLF_INLINE int dym_get(dym_array *array, size_t id);
-// Sets value of [array] at position [id] with [value]
-MYLF_CONTAINERS MYLF_INLINE void dym_set(dym_array *array, size_t id, VALUE_TYPE value);
-// Deallocates [array]
-MYLF_CONTAINERS void dym_free(dym_array *array);
 // Appends as last element to [array] given [value]
 MYLF_CONTAINERS void dym_append(dym_array *array, VALUE_TYPE value);
 // Removes element at position [id] and moves all elements by right hand at 1 step to left
 MYLF_CONTAINERS void dym_remove(dym_array *array, size_t id);
 // Inserts element at position [id] with [value] and moves all elements by right hand at 1 step to right
 MYLF_CONTAINERS void dym_insert(dym_array *array, size_t pos, VALUE_TYPE value);
-// Copies values from right dym_array to right dym_array
-MYLF_CONTAINERS void dym_copy(dym_array *from, dym_array *to);
 
 #endif // DYM_ARRAY
 
@@ -56,7 +46,7 @@ typedef void __mink_node;
 typedef struct
 {
     __mink_node *next;
-    int value;
+    VALUE_TYPE value;
 
 }  mink_node;
 
@@ -67,16 +57,10 @@ typedef struct
     
 } mink_list;
 
-// Allocates mink_list structure within heap memory and returns pointer to it.
-MYLF_CONTAINERS mink_list *mink_alloc(void);
 // Allocates mink_node structure within heap memory and returns pointer to it
 MYLF_CONTAINERS mink_node *mink_node_alloc(void);
 // Frees heap memory by given mink_list pointer
-MYLF_CONTAINERS void mink_free(mink_list* list);
-// Frees heap memory by given mink_node pointer
-MYLF_CONTAINERS void mink_free_node(mink_node* list);
-// Casts __mink_node pointer to mink_node structure pointer
-MYLF_CONTAINERS MYLF_INLINE mink_node *mink_convert(__mink_node *node);
+MYLF_CONTAINERS void mink_free(mink_list *list);
 // Returns next node of current mink_node
 MYLF_CONTAINERS MYLF_INLINE mink_node *mink_next(mink_node *current);
 // Returns pointer to the  end node of given mink_list 

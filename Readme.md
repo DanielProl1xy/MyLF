@@ -45,23 +45,22 @@ build\test.exe
 
 int main()
 {
-    dym_array *arr = dym_init();
+    dym_array arr = {0};
 
     for(size_t i = 0; i < 32; i++)
     {
-        dym_append(arr, i * i);
+        dym_append(&arr, i * i);
     }
 
-    dym_remove(arr, 16);
-    dym_insert(arr, 16, 0);
+    dym_remove(&arr, 16);
+    dym_insert(&arr, 16, 0);
 
-    for(size_t i = 0; i < arr->last; ++i)
+    for(size_t i = 0; i < arr.size; ++i)
     {
-        printf("%i, ", dym_get(arr, i));
+        printf("%i, ", arr.data[i]);
     }
 
     dym_free(arr);
-    free(arr); // Don't forget to deallocate memory
 
     return 0;
 }
@@ -74,14 +73,14 @@ int main()
 
 int main()
 {
-    mink_list *list = mink_alloc();
+    mink_list list = {0};
 
     for(size_t i = 0; i < 32; ++i)
     {
-        mink_append(list, i);
+        mink_append(&list, i);
     }
-    mink_insert(list, 5, 30);
-    mink_remove(list, 6);
+    mink_insert(&list, 5, 30);
+    mink_remove(&list, 6);
 
     mink_node *node = list->head;
 
@@ -92,7 +91,6 @@ int main()
     }
 
     mink_free(list);
-    free(list); // Don't forget to deallocate memory
 
     return 0;
 }
